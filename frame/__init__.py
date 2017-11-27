@@ -18,13 +18,16 @@ class Frame:
         self._frame_name = name or self._name_
 
         for attr_name, params in self._slots_.items():
-            if isinstance(params, (list, tuple)):
-                slot = self._get_slot(params[0], params[1])
-                setattr(self, attr_name, slot)
+            if params is None:
+                continue
 
+            if attr_name in Slot.SYSTEMS_NAMES:
+                name, value, inheritance_type = attr_name, params[0], params[1]
             else:
-                slot = self._get_slot(attr_name, params)
-                setattr(self, attr_name, slot)
+                name, value, inheritance_type = params[0], params[1], params[2]
+
+            slot = self._get_slot(name, value, inheritance_type)
+            setattr(self, attr_name, slot)
 
     def _collect_slots(self):
         parents = self.__class__.__mro__
@@ -33,11 +36,11 @@ class Frame:
                 self._slots_.update(parent._slots_)
 
     @staticmethod
-    def _get_slot(name, value):
+    def _get_slot(name, value, inheritance_type):
         return (
-            Slot(name=name, _type=value)
+            Slot(name=name, _type=value, inheritance_type=inheritance_type)
             if inspect.isclass(value) else
-            Slot(name=name, _type=value.__class__, value=value)
+            Slot(name=name, _type=value.__class__, value=value, inheritance_type=inheritance_type)
         )
 
     @property
@@ -52,11 +55,14 @@ class Slot:
     # Имена системных слотов
     SYSTEMS_NAMES = ('IS_A', 'PART_OF')
 
-    # Указатель наследования
-    IT_UNIQUE = 'UNIQUE'
-    IT_RANGE = 'RANGE'
+    # -*- Указатели наследования -*-
+    # Значение слота наследуется
     IT_SAME = 'SAME'
-    INHERITANCE_TYPES = (IT_UNIQUE, IT_RANGE, IT_SAME)
+    # Значение слота не наследуется
+    IT_UNIQUE = 'UNIQUE'
+    # При отсутствии значения в текущем слоте оно наследуется из фрейма верхнего уровня,
+    # однако в случае определения значения текущего слота оно может быть уникальным
+    IT_OVERRIDE = 'OVERRIDE'
 
     def __init__(self, name, _type, inheritance_type=None, value=None):
         """
@@ -65,6 +71,7 @@ class Slot:
         """
         self._name = name
         self._type = _type
+        self._inheritance_type = inheritance_type
         self._value = value or self._type()
 
     def __getattr__(self, attr):
