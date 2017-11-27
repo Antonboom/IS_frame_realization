@@ -58,7 +58,7 @@ class KnowledgeAccumulator:
             component = ComponentType()
             for attr_name in dir(component):
                 slot = getattr(component, attr_name)
-                if isinstance(slot, Slot) and not slot.is_system:
+                if isinstance(slot, Slot) and not slot.is_system and not slot.value:
                     print('Введите "{}":'.format(slot.name))
                     slot.value = input()
 

@@ -20,20 +20,26 @@ class Frame:
         for attr_name, params in self._slots_.items():
             if params is None:
                 continue
-
-            if attr_name in Slot.SYSTEMS_NAMES:
-                name, value, inheritance_type = attr_name, params[0], params[1]
-            else:
-                name, value, inheritance_type = params[0], params[1], params[2]
-
-            slot = self._get_slot(name, value, inheritance_type)
+            slot = self._get_slot(*self._get_slot_args(attr_name, params))
             setattr(self, attr_name, slot)
 
     def _collect_slots(self):
         parents = self.__class__.__mro__
-        for parent in parents:
+        for parent in reversed(parents):
             if parent not in (self.__class__, object):
                 self._slots_.update(parent._slots_)
+                for name, params in parent._slots_.items():
+                    if not params:
+                        continue
+                    name, value, inheritance_type = self._get_slot_args(name, params)
+                    if inheritance_type == Slot.IT_UNIQUE:
+                        self._slots_[name] = name, value.__class__, inheritance_type
+
+    @staticmethod
+    def _get_slot_args(name, params):
+        if name in Slot.SYSTEMS_NAMES:
+            return name, params[0], params[1]
+        return params[0], params[1], params[2]
 
     @staticmethod
     def _get_slot(name, value, inheritance_type):
@@ -72,7 +78,7 @@ class Slot:
         self._name = name
         self._type = _type
         self._inheritance_type = inheritance_type
-        self._value = value or self._type()
+        #self._value = value or self._type()
 
     def __getattr__(self, attr):
         return getattr(self._value, attr)
