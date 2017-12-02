@@ -20,6 +20,7 @@ class Scheme(Frame):
 
     def add_components(self, *components):
         """
+        Добавить электронные компоненты
         :type components: tuple[el_scheme.Component]
         """
         for component in components:
@@ -27,12 +28,16 @@ class Scheme(Frame):
 
     def add_check_points(self, *check_points):
         """
+        Добавить контрольные точки
         :type check_points: tuple[el_scheme.CheckPoint]
         """
         for check_point in check_points:
             self.check_points.append(check_point)
 
     def print(self):
+        """
+        Вывести на экран содержимое
+        """
         print(self)
         print('\t*** Электронные компоненты ***')
         for element in self.elements:
@@ -43,9 +48,6 @@ class Scheme(Frame):
             print('\t*** Контрольные точки ***')
             for point in self.check_points:
                 print('\t{}'.format(point))
-
-    def print_name(self):
-        print(self.name)
 
     def serialize(self):
         return {
@@ -62,6 +64,9 @@ class Scheme(Frame):
         }
 
     def save_to_db(self):
+        """
+        Сохранение в базу данных (файл формата JSON)
+        """
         data = self.serialize()
         file_path = settings.DB_FILE_PATH
 
@@ -72,6 +77,10 @@ class Scheme(Frame):
 
     @classmethod
     def load_from_db(cls):
+        """
+        Загрузка схемы из базы данных (файл формата JSON)
+        :return Объект типа Scheme
+        """
         from .check_point import CheckPoint
 
         scheme = cls()

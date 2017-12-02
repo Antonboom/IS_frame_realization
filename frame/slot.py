@@ -17,11 +17,12 @@ class Slot:
     # однако в случае определения значения текущего слота оно может быть уникальным
     IT_OVERRIDE = 'OVERRIDE'
 
-    def __init__(self, name, value, inheritance_type):
+    def __init__(self, name, value, inheritance_type, daemon=None):
         self._name = name
         self._type = value.__class__
         self._inheritance_type = inheritance_type
         self._value = value
+        self._daemon = daemon or (lambda: None)
 
     def __getattr__(self, attr):
         return getattr(self._value, attr)
@@ -43,7 +44,7 @@ class Slot:
 
     @property
     def value(self):
-        return self._value.value
+        return self._value.value or self._daemon
 
     # noinspection PyCallingNonCallable
     @value.setter

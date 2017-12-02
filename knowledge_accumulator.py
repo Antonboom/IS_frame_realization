@@ -8,6 +8,7 @@ class KnowledgeAccumulator:
     """
     def __init__(self, scheme):
         """
+        :param scheme: Электрическая схема
         :type scheme: el_scheme.Scheme
         """
         self._scheme = scheme

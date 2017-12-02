@@ -6,7 +6,9 @@ __all__ = ('CheckPoint',)
 
 
 class CheckPoint(Frame):
-
+    """
+    Контрольная точка
+    """
     _name_ = 'Контрольная точка'
     _slots_ = {
         'IS_A':     (FramePtrList(),       Slot.IT_OVERRIDE),

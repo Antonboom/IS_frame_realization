@@ -3,7 +3,9 @@ from .scheme import Scheme
 
 
 class Component(Frame):
-
+    """
+    Электронный компонент
+    """
     _name_ = 'Электронный компонент'
     _slots_ = {
         'IS_A':     (FramePtrList(),       Slot.IT_OVERRIDE),
@@ -27,7 +29,9 @@ class Component(Frame):
 
 
 class ActiveComponent(Component):
-
+    """
+    Активный электронный компонент
+    """
     _name_ = 'Активный компонент'
     _slots_ = {
         'IS_A':      (FramePtrList(Component), Slot.IT_UNIQUE),
@@ -36,7 +40,9 @@ class ActiveComponent(Component):
 
 
 class PassiveComponent(Component):
-
+    """
+    Пассивный электронный компонент
+    """
     _name_ = 'Пассивный компонент'
     _slots_ = {
         'IS_A':      (FramePtrList(Component),  Slot.IT_UNIQUE),
@@ -45,7 +51,9 @@ class PassiveComponent(Component):
 
 
 class Diod(ActiveComponent):
-
+    """
+    Диод
+    """
     _name_ = 'Диод'
     _slots_ = {
         'IS_A': (FramePtrList(ActiveComponent), Slot.IT_SAME),
@@ -56,7 +64,9 @@ class Diod(ActiveComponent):
 
 
 class Transistor(ActiveComponent):
-
+    """
+    Транзистор
+    """
     _name_ = 'Транзистор'
     _slots_ = {
         'IS_A': (FramePtrList(ActiveComponent), Slot.IT_SAME),
@@ -74,7 +84,9 @@ class Transistor(ActiveComponent):
 
 
 class Resistor(PassiveComponent):
-
+    """
+    Резистор
+    """
     _name_ = 'Резистор'
     _slots_ = {
         'IS_A': (FramePtrList(ActiveComponent), Slot.IT_SAME),
@@ -89,7 +101,9 @@ class Resistor(PassiveComponent):
 
 
 class Capacitor(PassiveComponent):
-
+    """
+    Конденсатор
+    """
     _name_ = 'Конденсатор'
     _slots_ = {
         'IS_A': (FramePtrList(ActiveComponent), Slot.IT_SAME),
@@ -104,7 +118,9 @@ class Capacitor(PassiveComponent):
 
 
 class Inductance(PassiveComponent):
-
+    """
+    Катушка индуктивности
+    """
     _name_ = 'Катушка индуктивности'
     _slots_ = {
         'IS_A': (FramePtrList(ActiveComponent), Slot.IT_SAME),
