@@ -1,0 +1,147 @@
+{
+  "name": "\u041e\u0434\u043d\u043e\u043a\u0430\u0441\u043a\u0430\u0434\u043d\u044b\u0439 \u0443\u0441\u0438\u043b\u0438\u0442\u0435\u043b\u044c",
+  "type": "Scheme",
+  "elements": [
+    {
+      "graphic": null,
+      "is_active": false,
+      "limiting_operating_voltage": null,
+      "rated_resistance": 8200,
+      "resistance_temperature_coeff": null,
+      "symbol": "R1",
+      "title": null,
+      "name": "\u0420\u0435\u0437\u0438\u0441\u0442\u043e\u0440",
+      "type": "Resistor"
+    },
+    {
+      "graphic": null,
+      "is_active": false,
+      "limiting_operating_voltage": null,
+      "rated_resistance": 4700,
+      "resistance_temperature_coeff": null,
+      "symbol": "R2",
+      "title": null,
+      "name": "\u0420\u0435\u0437\u0438\u0441\u0442\u043e\u0440",
+      "type": "Resistor"
+    },
+    {
+      "graphic": null,
+      "is_active": false,
+      "limiting_operating_voltage": null,
+      "rated_resistance": 1200,
+      "resistance_temperature_coeff": null,
+      "symbol": "R\u043a",
+      "title": null,
+      "name": "\u0420\u0435\u0437\u0438\u0441\u0442\u043e\u0440",
+      "type": "Resistor"
+    },
+    {
+      "graphic": null,
+      "is_active": false,
+      "limiting_operating_voltage": null,
+      "rated_resistance": 1000,
+      "resistance_temperature_coeff": null,
+      "symbol": "R\u044d",
+      "title": null,
+      "name": "\u0420\u0435\u0437\u0438\u0441\u0442\u043e\u0440",
+      "type": "Resistor"
+    },
+    {
+      "capacity": 220,
+      "graphic": null,
+      "is_active": false,
+      "rated_voltage": null,
+      "specific_capacity": null,
+      "symbol": "C1",
+      "title": null,
+      "name": "\u041a\u043e\u043d\u0434\u0435\u043d\u0441\u0430\u0442\u043e\u0440",
+      "type": "Capacitor"
+    },
+    {
+      "capacity": 470,
+      "graphic": null,
+      "is_active": false,
+      "rated_voltage": null,
+      "specific_capacity": null,
+      "symbol": "C2",
+      "title": null,
+      "name": "\u041a\u043e\u043d\u0434\u0435\u043d\u0441\u0430\u0442\u043e\u0440",
+      "type": "Capacitor"
+    },
+    {
+      "capacity": 6800,
+      "graphic": null,
+      "is_active": false,
+      "rated_voltage": null,
+      "specific_capacity": null,
+      "symbol": "C\u044d",
+      "title": null,
+      "name": "\u041a\u043e\u043d\u0434\u0435\u043d\u0441\u0430\u0442\u043e\u0440",
+      "type": "Capacitor"
+    },
+    {
+      "current_transfer_ratio": null,
+      "graphic": null,
+      "input_resistance": null,
+      "is_active": true,
+      "limit_freq_base_current_transfer_factor": null,
+      "reverse_collector_current": null,
+      "symbol": "V1",
+      "title": null,
+      "transition_type": null,
+      "name": "\u0422\u0440\u0430\u043d\u0437\u0438\u0441\u0442\u043e\u0440",
+      "type": "Transistor"
+    }
+  ],
+  "check_points": [
+    {
+      "error": null,
+      "permissible_voltage": 11,
+      "symbol": "\u041a\u04221",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": null,
+      "permissible_voltage": 7.5,
+      "symbol": "\u041a\u04222",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": null,
+      "permissible_voltage": 18,
+      "symbol": "\u041a\u04223",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": null,
+      "permissible_voltage": 15,
+      "symbol": "\u041a\u04224",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": null,
+      "permissible_voltage": 7,
+      "symbol": "\u041a\u04225",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": null,
+      "permissible_voltage": 11,
+      "symbol": "\u041a\u04227",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    },
+    {
+      "error": "1",
+      "permissible_voltage": "0",
+      "symbol": "\u041a\u04226",
+      "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
+      "type": "CheckPoint"
+    }
+  ]
+}

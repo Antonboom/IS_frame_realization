@@ -1,5 +1,4 @@
-from frame import Frame, Slot
-from frame.slot_types import FramePtrList, Integer, Real, Text, Bool, Table
+from frame import Frame, Slot, FramePtrList, Integer, Real, Text, Bool, Table
 from .scheme import Scheme
 
 
@@ -10,7 +9,7 @@ class Component(Frame):
         'IS_A':     (FramePtrList(),       Slot.IT_OVERRIDE),
         'PART_OF':  (FramePtrList(Scheme), Slot.IT_OVERRIDE),
 
-        'name':         ('Наименование',            Text(), Slot.IT_UNIQUE),
+        'title':        ('Наименование',            Text(), Slot.IT_UNIQUE),
         'is_active':    ('Активный?',               Bool(), Slot.IT_UNIQUE),
         'symbol':       ('Символьное обозначение',  Text(), Slot.IT_UNIQUE),
         'graphic':      ('Графическое обозначение', Text(), Slot.IT_UNIQUE),
@@ -19,9 +18,12 @@ class Component(Frame):
     def __repr__(self):
         return '<{} "{}" ({})>'.format(
             self._frame_name,
-            self.symbolic_designation.value,
+            self.symbol.value,
             'активный' if self.is_active.value else 'не активный'
         )
+
+    def __eq__(self, other):
+        return self.symbol.value == other.symbol.value
 
 
 class ActiveComponent(Component):
@@ -67,6 +69,9 @@ class Transistor(ActiveComponent):
                                                     'передачи тока базы, Гц',       Real(), Slot.IT_UNIQUE),
     }
 
+    def __repr__(self):
+        return '<{} "{}">'.format(self._frame_name, self.symbol.value)
+
 
 class Resistor(PassiveComponent):
 
@@ -80,7 +85,7 @@ class Resistor(PassiveComponent):
     }
 
     def __repr__(self):
-        return '< {} "{}" ({} Ом)>'.format(self._frame_name, self.name.value, self.rated_resistance.value)
+        return '<{} "{}" ({} Ом)>'.format(self._frame_name, self.symbol.value, self.rated_resistance.value)
 
 
 class Capacitor(PassiveComponent):
@@ -95,7 +100,7 @@ class Capacitor(PassiveComponent):
     }
 
     def __repr__(self):
-        return '< {} "{}" ({} мкФ)>'.format(self._frame_name, self.name.value, self.capacity.value)
+        return '<{} "{}" ({} мкФ)>'.format(self._frame_name, self.symbol.value, self.capacity.value)
 
 
 class Inductance(PassiveComponent):
@@ -108,3 +113,6 @@ class Inductance(PassiveComponent):
         'loss_resistance': ('Сопротивление потерь, Ом', Real(),    Slot.IT_UNIQUE),
         'q_factor':        ('Добротность',              Real(),    Slot.IT_UNIQUE),
     }
+
+    def __repr__(self):
+        return '<{} "{}" ({} Гн)>'.format(self._frame_name, self.symbol.value, self.inductance.value)

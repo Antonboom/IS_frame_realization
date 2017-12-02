@@ -89,3 +89,8 @@ class FramePtrList(SlotType):
         if not self.value:
             self.value = []
         self.value.append(frame_pointer)
+
+    def remove(self, frame_pointer):
+        if not self.value:
+            return
+        self.value.remove(frame_pointer)
