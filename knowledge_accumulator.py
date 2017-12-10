@@ -2,6 +2,9 @@ from frame import Slot
 from el_scheme import Diod, Transistor, Resistor, Capacitor, Inductance, Component, CheckPoint
 
 
+__all__ = ('KnowledgeAccumulator',)
+
+
 class KnowledgeAccumulator:
     """
     Модуль накопления знаний

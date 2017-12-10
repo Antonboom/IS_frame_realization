@@ -44,7 +44,8 @@ class Slot:
 
     @property
     def value(self):
-        return self._value.value or self._daemon
+        # FIXME: TypeError: Object of type 'function' is not JSON serializable
+        return self._value.value # or self._daemon
 
     # noinspection PyCallingNonCallable
     @value.setter

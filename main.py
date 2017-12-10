@@ -40,6 +40,7 @@ def create_scheme(from_db=False):
 
 
 def main():
+    #create_scheme().save_to_db()
     scheme = create_scheme(from_db=True)
     KnowledgeAccumulator(scheme).learning()
 

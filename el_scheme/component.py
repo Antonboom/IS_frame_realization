@@ -2,6 +2,11 @@ from frame import Frame, Slot, FramePtrList, Integer, Real, Text, Bool, Table
 from .scheme import Scheme
 
 
+__all__ = (
+    'Component', 'ActiveComponent', 'PassiveComponent', 'Diod', 'Transistor', 'Resistor', 'Capacitor', 'Inductance'
+)
+
+
 class Component(Frame):
     """
     Электронный компонент

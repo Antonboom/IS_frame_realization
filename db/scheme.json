@@ -131,15 +131,15 @@
     },
     {
       "error": null,
-      "permissible_voltage": 11,
-      "symbol": "\u041a\u04227",
+      "permissible_voltage": 0,
+      "symbol": "\u041a\u04226",
       "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
       "type": "CheckPoint"
     },
     {
-      "error": "1",
-      "permissible_voltage": "0",
-      "symbol": "\u041a\u04226",
+      "error": null,
+      "permissible_voltage": 11,
+      "symbol": "\u041a\u04227",
       "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0430\u044f \u0442\u043e\u0447\u043a\u0430",
       "type": "CheckPoint"
     }
